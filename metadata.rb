@@ -9,5 +9,3 @@ version          '0.1.10'
 %w(fedora redhat centos oracle amazon scientific).each do |p|
   supports p
 end
-
-depends 'java'

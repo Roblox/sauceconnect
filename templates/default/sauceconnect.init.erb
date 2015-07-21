@@ -31,22 +31,20 @@
 # Source config file if it exists
 [ -r /etc/sysconfig/sauceconnect ] && . /etc/sysconfig/sauceconnect
 
-jarfile=${JARFILE-<%= node['sauceconnect']['server']['install_dir'] %>/Sauce-Connect.jar}
-logfile=${LOGFILE-<%= node['sauceconnect']['server']['install_dir'] %>/sauce_connect.log}
-sauceuser=${SAUCEUSER-root}
-apiuser=${APIUSER-bogus}
-apikey=${APIKEY-bogus}
-
-[ -r $JARFILE ] || exit 0
+logfile=${LOGFILE}
+sauceuser=${SAUCEUSER}
+apiuser=${APIUSER}
+apikey=${APIKEY}
+pidfile=${PIDFILE}
 
 start() {
   ulimit -n 10240
-  daemon --user $SAUCEUSER "java -jar $jarfile -l $logfile $apiuser $apikey &"
+  daemon --user $SAUCEUSER "/opt/sauceconnect/bin/sc -l $logfile -u $apiuser -k $apikey > /dev/null 2>&1 &"
 }
 
 stop() {
   # This is rather dirty. But it'll do for now.
-  pkill -U $SAUCEUSER java
+  pkill -U $SAUCEUSER sc
 }
 
 case $1 in

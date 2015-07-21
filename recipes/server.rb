@@ -23,6 +23,7 @@ user node['sauceconnect']['server']['user'] do
   comment 'SauceLabs Proxy User'
   system true
   action :create
+  shell '/bin/false'
 end
 
 directory node['sauceconnect']['server']['install_dir'] do
@@ -31,20 +32,15 @@ directory node['sauceconnect']['server']['install_dir'] do
   action :create
 end
 
-# Can't assume we have unzip
-package 'unzip' do
-  action :install
-end
-
 execute 'unzip-saucelabs-proxy' do
   cwd node['sauceconnect']['server']['install_dir']
-  command "unzip -o #{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}"
+  command "tar -xzv -C #{node['sauceconnect']['server']['install_dir']} -f #{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['tarball']} --strip-components 1"
   action :nothing
   notifies :restart, 'service[sauceconnect]'
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}" do
-  source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['zipfile']}"
+remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['tarball']}" do
+  source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['tarball']}"
   action :create
   notifies :run, 'execute[unzip-saucelabs-proxy]', :immediately
 end
