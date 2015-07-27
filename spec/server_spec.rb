@@ -14,9 +14,6 @@ describe 'sauceconnect::server' do
   end
 
   context 'setting up the system' do
-    it 'installs unzip to unpack the zipfile' do
-      expect(chef_run).to install_package('unzip')
-    end
 
     it 'creates a user to run sauceconnect under' do
       expect(chef_run).to create_user('fake')
@@ -37,10 +34,10 @@ describe 'sauceconnect::server' do
 
   context 'downloading from SauceLabs' do
     it 'downloads a remote_file from Sauce Labs' do
-      expect(chef_run).to create_remote_file(::File.join(Chef::Config[:file_cache_path], 'Sauce-Connect-3.14159.zip'))
+      expect(chef_run).to create_remote_file(::File.join(Chef::Config[:file_cache_path], 'sc-3.14159-linux.tar.gz'))
     end
     it 'notifies the extraction' do
-      resource = chef_run.remote_file(::File.join(Chef::Config[:file_cache_path], 'Sauce-Connect-3.14159.zip'))
+      resource = chef_run.remote_file(::File.join(Chef::Config[:file_cache_path], 'sc-3.14159-linux.tar.gz'))
       expect(resource).to notify('execute[unzip-saucelabs-proxy]').to(:run).immediately
       expect(resource).to_not notify('execute[unzip-saucelabs-proxy]').to(:run).delayed
     end
