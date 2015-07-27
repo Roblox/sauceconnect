@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of sauceproxy.
 
+## 0.2.0:
+
+* Upgrade to SauceConnect 4.3.10.
+
 ## 0.1.9:
 
 * Added (some) tests. Upgrade to SauceConnect 3.0-r28
