@@ -11,4 +11,3 @@ source_url       'https://github.com/juliandunn/sauceconnect'
 %w(fedora redhat centos oracle amazon scientific).each do |p|
   supports p
 end
-
