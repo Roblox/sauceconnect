@@ -14,7 +14,6 @@ describe 'sauceconnect::server' do
   end
 
   context 'setting up the system' do
-
     it 'creates a user to run sauceconnect under' do
       expect(chef_run).to create_user('fake')
     end

@@ -3,20 +3,15 @@ Description
 
 Installs SauceLabs' "Connect" proxy on a server. The proxy allows you to test internal infrastructure with SauceLabs' Selenium testing service by setting up a tunnel.
 
-[![Build Status](https://travis-ci.org/juliandunn/sauceproxy.png)](https://travis-ci.org/juliandunn/sauceproxy)
+[![Build Status](https://travis-ci.org/juliandunn/sauceconnect.png)](https://travis-ci.org/juliandunn/sauceconnect)
 
 Requirements
 ============
 
-## Cookbooks
-
-* java - Note that we've only tested the proxy with the Oracle JDK, but OpenJDK might work too.
-
 ## Platforms
 
-* CentOS 5.x, 6.x
+* CentOS 5.x, 6.x, 7.x
 * RedHat Enterprise Linux 5.x, 6.x
-* Fedora
 
 Attributes
 ==========
@@ -54,14 +49,15 @@ To-Do
 * Add more tests.
 * Throw an exception if neither the API user or key are defined.
 * Support other platforms (Debian, Ubuntu, etc.)
+* Convert service definition to use upstart on RHEL6 and systemd on RHEL7.
 
 License and Author
 ==================
 
-* Author:: Julian C. Dunn (<jdunn@opscode.com>)
+* Author:: Julian C. Dunn (<jdunn@chef.io>)
 
 * Copyright:: 2012-2013, SecondMarket Labs, LLC.
-* Copyright:: 2013, Opscode, Inc.
+* Copyright:: 2013-2015, Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

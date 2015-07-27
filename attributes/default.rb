@@ -25,7 +25,7 @@ default['sauceconnect']['server']['tarball'] = "sc-#{node['sauceconnect']['serve
 default['sauceconnect']['server']['install_dir'] = '/opt/sauceconnect'
 default['sauceconnect']['server']['user'] = 'sauceprx'
 default['sauceconnect']['server']['log_file'] = "#{node['sauceconnect']['server']['install_dir']}/sauceconnect.log"
-default['sauceconnect']['server']['pid_file'] = "/var/run/sauceconnect.pid"
+default['sauceconnect']['server']['pid_file'] = '/var/run/sauceconnect.pid'
 
 # Typically overridden in the role
 default['sauceconnect']['server']['api_user'] = ''
