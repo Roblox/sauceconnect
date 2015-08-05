@@ -52,4 +52,4 @@ env:
   matrix:
   - KITCHEN_INSTANCE='server-centos-58'
   - KITCHEN_INSTANCE='server-centos-65'
-  - KITCHEN-INSTANCE='server-centos-70'
+  - KITCHEN_INSTANCE='server-centos-70'
