@@ -39,4 +39,8 @@ suites:
 - name: server
   run_list:
   - recipe[sauceconnect::server]
-  attributes: {}
+  attributes:
+    sauceconnect:
+      server:
+        api_user: <%= ENV['SAUCELABS_API_USER'] %>
+        api_key: <%= ENV['SAUCELABS_API_KEY'] %>
