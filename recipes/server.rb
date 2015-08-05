@@ -58,6 +58,7 @@ template '/etc/sysconfig/sauceconnect' do
   owner 'root'
   group 'root'
   action :create
+  sensitive true # suppress displaying of API keys
 end
 
 service 'sauceconnect' do
