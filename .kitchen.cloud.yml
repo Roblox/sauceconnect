@@ -26,7 +26,7 @@ platforms:
     ssh_key_ids: <%= ENV['DIGITAL_OCEAN_SSH_KEY_IDS'] %>
     ssh_key: <%= ENV['DIGITAL_OCEAN_SSH_KEY_PATH'] %>
 
-- name: centos-7-0
+- name: centos-7.0
   driver_plugin: digitalocean
   driver_config:
     size: 1gb
